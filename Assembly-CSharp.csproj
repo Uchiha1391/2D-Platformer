@@ -55,9 +55,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ArmRotation.cs" />
-    <Compile Include="Assets\MoveTrail.cs" />
-    <Compile Include="Assets\Parallaxing.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -66,8 +63,14 @@
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
-    <Compile Include="Assets\Tiling.cs" />
-    <Compile Include="Assets\Weapon.cs" />
+    <Compile Include="Assets\Scripts\ArmRotation.cs" />
+    <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
+    <Compile Include="Assets\Scripts\GameMaster.cs" />
+    <Compile Include="Assets\Scripts\MoveTrail.cs" />
+    <Compile Include="Assets\Scripts\Parallaxing.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Tiling.cs" />
+    <Compile Include="Assets\Scripts\Weapon.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/youss/OneDrive/Desktop/Projects/2D Platformer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
