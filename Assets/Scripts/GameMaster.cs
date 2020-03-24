@@ -14,14 +14,19 @@ public class GameMaster : MonoBehaviour
 
     public Transform playerPrefab;
     public Transform spawnPoint;
-    public int spawnDelay = 2;
+    public float spawnDelay = 2;
+    public Transform spawnPrefab;
+    public AudioSource respawnAudio;
 
     public IEnumerator RespawnPlayer()
     {
-        Debug.Log("TODO: Add waiting for spawn sound");
+        respawnAudio = GetComponent<AudioSource>();
+        respawnAudio.Play();
         yield return new WaitForSeconds(spawnDelay);
         Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
-        Debug.Log("TODO: Add Spawn Particles");
+        Transform spawnParticleClone = Instantiate(spawnPrefab, spawnPoint.position, spawnPoint.rotation);
+        Destroy(spawnParticleClone.gameObject, 3f);
+        
     }
 
     public static void KillPlayer(Player player)
