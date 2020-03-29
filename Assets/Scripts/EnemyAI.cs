@@ -35,6 +35,7 @@ public class EnemyAI : MonoBehaviour
     //Caching
     private Seeker seeker;
     private Rigidbody2D rigidBody;
+    private bool searchingForPlayer = false;
 
 
 
@@ -46,7 +47,11 @@ public class EnemyAI : MonoBehaviour
 
         if(target==null)
         {
-            Debug.Log("Player not found on start");
+            if(!searchingForPlayer)
+            {
+                searchingForPlayer = true;
+                StartCoroutine(SearchForPlayer());
+            }
             return;
         }
 
@@ -56,11 +61,34 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(UpdatePath());
     }
 
+    IEnumerator SearchForPlayer()
+    {
+        GameObject searchResult = GameObject.FindGameObjectWithTag("Player");
+        if(searchResult==null)
+        {
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(SearchForPlayer());
+        }
+        else
+        {
+            searchingForPlayer = false;
+            target = searchResult.transform;
+            StartCoroutine(UpdatePath());
+            yield return false;
+        }
+
+    }
+
+
     IEnumerator UpdatePath()
     {
-        if(target==null)
+        if (target == null)
         {
-            //TODO: insert a player search here
+            if (!searchingForPlayer)
+            {
+                searchingForPlayer = true;
+                StartCoroutine(SearchForPlayer());
+            }
             yield return false;
         }
         seeker.StartPath(transform.position, target.position, OnPathComplete);
@@ -81,12 +109,17 @@ public class EnemyAI : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(target==null)
+        if (target == null)
         {
+            if (!searchingForPlayer)
+            {
+                searchingForPlayer = true;
+                StartCoroutine(SearchForPlayer());
+            }
             return;
         }
 
-        if(path==null)
+        if (path==null)
         {
             return;
         }
