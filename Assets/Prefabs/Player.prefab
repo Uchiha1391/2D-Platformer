@@ -520,6 +520,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6373816216834762712, guid: 81ef5657d1609df4f94d80cf8d60d224,
         type: 3}
+      propertyPath: fireRate
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373816216834762712, guid: 81ef5657d1609df4f94d80cf8d60d224,
+        type: 3}
+      propertyPath: whatToHit.m_Bits
+      value: 1587
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373816216834762712, guid: 81ef5657d1609df4f94d80cf8d60d224,
+        type: 3}
       propertyPath: bulletTrailPrefab
       value: 
       objectReference: {fileID: 7342648266631443169, guid: 12890ac98d41bc64da7ce34f62fca4a0,
@@ -529,6 +539,12 @@ PrefabInstance:
       propertyPath: muzzleFlashPrefab
       value: 
       objectReference: {fileID: 8450833742263955569, guid: 36113933098e8ad49b197cf7deef28bd,
+        type: 3}
+    - target: {fileID: 6373816216834762712, guid: 81ef5657d1609df4f94d80cf8d60d224,
+        type: 3}
+      propertyPath: hitPrefab
+      value: 
+      objectReference: {fileID: 8536668329098120478, guid: 5fbda1bdc261c39488f47f05024b57eb,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81ef5657d1609df4f94d80cf8d60d224, type: 3}
