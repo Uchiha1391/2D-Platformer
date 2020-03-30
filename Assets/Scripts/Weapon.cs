@@ -113,6 +113,7 @@ public class Weapon : MonoBehaviour
         {
             Transform hitParticle = (Transform)Instantiate(hitPrefab,hitPosition,Quaternion.FromToRotation(Vector3.right,hitNormal));
             Destroy(hitParticle.gameObject, 1f);
+            camShake.Shake(camShakeAmount, camShakeLength);
         }
 
         Transform muzzleFlashClone = (Transform)Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
@@ -122,6 +123,5 @@ public class Weapon : MonoBehaviour
         Destroy(muzzleFlashClone.gameObject,0.02f);
 
         //Shake the camera
-        camShake.Shake(camShakeAmount, camShakeLength);
     }
 }

@@ -27,4 +27,12 @@ public class StatusIndicator : MonoBehaviour
         healthBarRect.localScale = new Vector3(_value, healthBarRect.localScale.y, healthBarRect.localScale.z);
         healthText.text = _cur + "/" + _max + " HP";
     }
+    public void SetColour(byte r,byte g,byte b,byte a=255)
+    {
+        healthBarRect.GetComponent<Image>().color = new Color32(r, g, b, a);
+    }
+    public Color32 GetColour()
+    {
+        return healthBarRect.GetComponent<Image>().color;
+    }
 }
