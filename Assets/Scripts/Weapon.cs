@@ -12,6 +12,11 @@ public class Weapon : MonoBehaviour
     public Transform hitPrefab;
     public float effectSpawnRate = 10;
 
+    //Handle Camera Shaking
+    public float camShakeAmount = 0.05f;
+    public float camShakeLength = 0.1f;
+
+    private CameraShake camShake;
     private float timeToFire = 0;
     private float timeToSpawnEffect=0;
     private Transform firePoint;
@@ -22,6 +27,15 @@ public class Weapon : MonoBehaviour
         if(firePoint==null)
         {
             Debug.LogError("Error: No FirePoint Object Found under Pistol *Weapon.cs*");
+        }
+    }
+
+    void Start()
+    {
+        camShake = GameMaster.gM.GetComponent<CameraShake>();
+        if(camShake==null)
+        {
+            Debug.LogError("No Camera Shake Script Found on GM objects");
         }
     }
 
@@ -106,5 +120,8 @@ public class Weapon : MonoBehaviour
         float size = Random.Range(0.6f, 0.9f);
         muzzleFlashPrefab.localScale = new Vector3(size, size, 0);
         Destroy(muzzleFlashClone.gameObject,0.02f);
+
+        //Shake the camera
+        camShake.Shake(camShakeAmount, camShakeLength);
     }
 }
