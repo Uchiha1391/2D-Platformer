@@ -15,6 +15,10 @@ public class Enemy : MonoBehaviour
             set { _curHealth = Mathf.Clamp(value,0,maxHealth); }
         }
 
+        public int damage = 40;
+
+        
+
         public void Init()
         {
             curHealth = maxHealth;
@@ -27,6 +31,10 @@ public class Enemy : MonoBehaviour
     private Color32 originalColour;
     private float timeToStopRed;
 
+    public Transform deathParticles;
+    public float shakeAmount = 0.1f;
+    public float shakeLength = 0.1f;
+
     [Header("Optional:")]
     [SerializeField]
     private StatusIndicator statusIndicator;
@@ -38,6 +46,10 @@ public class Enemy : MonoBehaviour
         if (statusIndicator != null)
         {
             statusIndicator.SetHealth(enemyStats.curHealth, enemyStats.maxHealth);
+        }
+        if(deathParticles==null)
+        {
+            Debug.LogError("No death particles referenced to enemy");
         }
     }
 
@@ -63,5 +75,15 @@ public class Enemy : MonoBehaviour
     {
         if(timeToStopRed<Time.time)
             statusIndicator.SetColour(originalColour.r, originalColour.g, originalColour.b, originalColour.a);
+    }
+
+    void OnCollisionEnter2D(Collision2D colliderInfo)
+    {
+        Player _player = colliderInfo.collider.GetComponent < Player > ();
+        if(_player != null)
+        {
+            _player.DamagePlayer(enemyStats.damage);
+            DamageEnemy(99999);
+        }
     }
 }
