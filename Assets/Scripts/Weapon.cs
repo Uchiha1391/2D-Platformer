@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
 
     void Awake()
     {
-        firePoint = transform.FindChild("FirePoint");
+        firePoint = transform.Find("FirePoint");
         if(firePoint==null)
         {
             Debug.LogError("Error: No FirePoint Object Found under Pistol *Weapon.cs*");
