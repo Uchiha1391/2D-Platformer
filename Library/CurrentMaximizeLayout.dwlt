@@ -22,10 +22,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 681, y: 348}
-  m_MaxSize: {x: 12006, y: 8048}
+  m_MinSize: {x: 711, y: 498}
+  m_MaxSize: {x: 18006, y: 14048}
   vertical: 0
-  controlID: 4602
+  controlID: 3256
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -125,8 +125,8 @@ MonoBehaviour:
     y: 0
     width: 202
     height: 731
-  m_MinSize: {x: 202, y: 224}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 4}
   m_Panes:
   - {fileID: 4}
@@ -163,7 +163,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 9edaffff62ddffffa2e8ffffd4fbffff481c0000
+      m_ExpandedIDs: 8492ffff5698ffff509fffffd4fbffffb61c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -208,10 +208,10 @@ MonoBehaviour:
     y: 0
     width: 952
     height: 731
-  m_MinSize: {x: 204, y: 348}
-  m_MaxSize: {x: 4004, y: 8048}
+  m_MinSize: {x: 234, y: 498}
+  m_MaxSize: {x: 10004, y: 14048}
   vertical: 1
-  controlID: 4473
+  controlID: 3214
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -231,8 +231,8 @@ MonoBehaviour:
     y: 0
     width: 952
     height: 457
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 224}
+  m_MaxSize: {x: 4004, y: 4024}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 7}
@@ -270,9 +270,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 474, y: 338.55002, z: 0}
+    m_Target: {x: 393.04532, y: 198.23169, z: -1.8203548}
     speed: 2
-    m_Value: {x: 474, y: 338.55002, z: 0}
+    m_Value: {x: 393.04532, y: 198.23169, z: -1.8203548}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -304,9 +304,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 434.04266
+    m_Target: 450.92123
     speed: 2
-    m_Value: 434.04266
+    m_Value: 450.92123
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -337,15 +337,15 @@ MonoBehaviour:
     y: 457
     width: 952
     height: 274
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 11}
+  m_MinSize: {x: 234, y: 274}
+  m_MaxSize: {x: 10004, y: 10024}
+  m_ActualView: {fileID: 9}
   m_Panes:
   - {fileID: 9}
   - {fileID: 10}
   - {fileID: 11}
   - {fileID: 12}
-  m_Selected: 2
+  m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &9
 MonoBehaviour:
@@ -385,20 +385,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Animation
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Animation
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\youss\OneDrive\Desktop\Projects\2D Platformer
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 7c0d0000
-    m_LastClickedID: 3452
-    m_ExpandedIDs: 00000000740c0000ec0d0000b60f00003e1200009c170000543c000000ca9a3b
+    scrollPos: {x: 0, y: 147}
+    m_SelectedIDs: a4180000
+    m_LastClickedID: 6308
+    m_ExpandedIDs: 00000000760c0000f40d0000be0f0000981000004e120000b417000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -426,7 +426,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000740c0000ec0d0000b60f00003e1200009c170000543c000000ca9a3b
+    m_ExpandedIDs: 00000000760c0000f40d0000be0f0000981000004e120000b417000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -451,10 +451,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 3cd9ffff
-    m_LastClickedInstanceID: -9924
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c623000000000000f2800000e2800000bc160000780f00007a0f0000
+    m_SelectedInstanceIDs: 5698ffff
+    m_LastClickedInstanceID: -26538
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c623000000000000f2800000e2800000bc160000780f00007a0f00006c3c0000c23c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -1150
+  m_LastSelectedObjectID: -24752
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
