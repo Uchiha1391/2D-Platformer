@@ -6,7 +6,10 @@ public class GameMaster : MonoBehaviour
 {
     public static GameMaster gM;
 
-    private static int remainingPlayerLives = 3;
+    [SerializeField]
+    private int maxLives = 3;
+
+    private static int remainingPlayerLives;
     
     public static int RemainingLives
     {
@@ -16,6 +19,7 @@ public class GameMaster : MonoBehaviour
 
     void Awake()
     {
+        remainingPlayerLives = maxLives;
         if (gM == null)
             gM = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
     }
