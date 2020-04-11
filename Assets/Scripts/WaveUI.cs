@@ -66,7 +66,7 @@ public class WaveUI : MonoBehaviour
             waveAnimator.SetBool("WaveCountdown", true);
             Debug.Log("Counting");
         }
-        waveCountdownText.text = ((int)spawner.WaveCountdown).ToString();
+        waveCountdownText.text = ((int)spawner.WaveCountdown+1).ToString();
     }
 
     void UpdateSpawningUI()
