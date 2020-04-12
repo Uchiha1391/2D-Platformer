@@ -25,6 +25,8 @@ namespace UnityStandardAssets._2D
 
         Transform playerGraphics;           // Reference to the graphics so we can change direction
 
+        AudioManager audioManager;
+
         private void Awake()
         {
             // Setting up references.
@@ -39,8 +41,18 @@ namespace UnityStandardAssets._2D
             }
         }
 
+        void Start()
+        {
+            audioManager = AudioManager.instance;
+            if (audioManager == null)
+            {
+                Debug.LogError("No AudioManager found ins scene");
+            }
+        }
+
         private void FixedUpdate()
         {
+            bool wasGrounded = m_Grounded;
             m_Grounded = false;
 
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -52,6 +64,11 @@ namespace UnityStandardAssets._2D
                     m_Grounded = true;
             }
             m_Anim.SetBool("Ground", m_Grounded);
+
+            if(wasGrounded!=m_Grounded&&m_Grounded==true)
+            {
+                audioManager.PlaySound(landingSoundName);
+            }
 
             // Set the vertical animation
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
