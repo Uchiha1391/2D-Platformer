@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyAI))]
+[RequireComponent(typeof(WaveSpawner))]
+[RequireComponent(typeof(WaveUI))]
 public class Enemy : MonoBehaviour
 {
     [System.Serializable]
@@ -49,10 +52,20 @@ public class Enemy : MonoBehaviour
         {
             statusIndicator.SetHealth(enemyStats.curHealth, enemyStats.maxHealth);
         }
+
+        GameMaster.gM.onToggleUpgradeMenu += OnUpgradeMenuToggle;
+
         if(deathParticles==null)
         {
             Debug.LogError("No death particles referenced to enemy");
         }
+    }
+
+    void OnUpgradeMenuToggle(bool activeState)
+    {
+        GetComponent<EnemyAI>().enabled = !activeState;
+        GetComponent<WaveUI>().enabled = !activeState;
+        GetComponent<WaveSpawner>().enabled = !activeState;
     }
 
     public void DamageEnemy(int damage)

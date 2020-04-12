@@ -37,6 +37,12 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     private GameObject gameOverUI;
 
+    [SerializeField]
+    private GameObject upgradeMenu;
+
+    public delegate void UpgradeMenuCallBack(bool active);
+    public UpgradeMenuCallBack onToggleUpgradeMenu;
+
     //cache
     private AudioManager audioManager;
 
@@ -54,6 +60,20 @@ public class GameMaster : MonoBehaviour
         {
             Debug.LogError("No Audio Manager found in the scene");
         }
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.U))
+        {
+            ToggleUpgradeMenu();
+        }
+    }
+
+    private void ToggleUpgradeMenu()
+    {
+        upgradeMenu.SetActive(!upgradeMenu.activeSelf);
+        onToggleUpgradeMenu.Invoke(upgradeMenu.activeSelf);
     }
 
     public void EndGame()

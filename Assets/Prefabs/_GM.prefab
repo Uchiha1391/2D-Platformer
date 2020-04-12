@@ -104,7 +104,9 @@ MonoBehaviour:
   cameraShake: {fileID: 923703815}
   playerDeathSoundName: Death
   playerSpawnSoundName: Spawn
+  gameOverSoundName: GameOver
   gameOverUI: {fileID: 0}
+  upgradeMenu: {fileID: 0}
 --- !u!114 &923703815
 MonoBehaviour:
   m_ObjectHideFlags: 0

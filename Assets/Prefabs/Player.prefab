@@ -148,6 +148,7 @@ MonoBehaviour:
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 1079
+  landingSoundName: LandingFootsteps
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +250,7 @@ MonoBehaviour:
   playerStats:
     maxHealth: 100
   fallBoundary: -20
+  damageSoundName: Grunt
   statusIndicator: {fileID: 1390869215}
 --- !u!1 &100004
 GameObject:
@@ -791,7 +793,12 @@ PrefabInstance:
     - target: {fileID: 6373816216834762712, guid: 81ef5657d1609df4f94d80cf8d60d224,
         type: 3}
       propertyPath: fireRate
-      value: 40
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373816216834762712, guid: 81ef5657d1609df4f94d80cf8d60d224,
+        type: 3}
+      propertyPath: Damage
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6373816216834762712, guid: 81ef5657d1609df4f94d80cf8d60d224,
         type: 3}
