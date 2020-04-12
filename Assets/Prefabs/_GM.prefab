@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 8868239417084911273}
   - component: {fileID: 8868239417084911278}
   - component: {fileID: 8868239417084911272}
-  - component: {fileID: 923703818}
   - component: {fileID: 923703815}
   - component: {fileID: 1608289486}
   m_Layer: 0
@@ -95,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3357854febfc3d7429e4aae65c154473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLives: 3
   playerPrefab: {fileID: 400002, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
   spawnPoint: {fileID: 59756235}
   spawnDelay: 3.5
@@ -102,102 +102,9 @@ MonoBehaviour:
     type: 3}
   respawnAudio: {fileID: 8300000, guid: bed3c58659cef7644a5acddfed6fc63d, type: 3}
   cameraShake: {fileID: 923703815}
---- !u!82 &923703818
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8868239417084911279}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bed3c58659cef7644a5acddfed6fc63d, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.5
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  playerDeathSoundName: Death
+  playerSpawnSoundName: Spawn
+  gameOverUI: {fileID: 0}
 --- !u!114 &923703815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,18 +133,18 @@ MonoBehaviour:
   waves:
   - name: Alien Invasion
     enemy: {fileID: 2424698597259717613, guid: 033ba89944e6ab84a8f5b907cd744604, type: 3}
-    count: 2
+    count: 7
     spawnRate: 1
   - name: Alien Invasion 2.0
     enemy: {fileID: 2424698597259717613, guid: 033ba89944e6ab84a8f5b907cd744604, type: 3}
-    count: 3
+    count: 13
     spawnRate: 1.5
   - name: RUN WHILE YOU CAN
     enemy: {fileID: 2424698597259717613, guid: 033ba89944e6ab84a8f5b907cd744604, type: 3}
-    count: 5
+    count: 20
     spawnRate: 2
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  timeBetweenWaves: 5
+  timeBetweenWaves: 3

@@ -30,7 +30,9 @@ public class GameMaster : MonoBehaviour
     public Transform spawnPrefab;
     public AudioSource respawnAudio;
     public CameraShake cameraShake;
-    public string spawnSoundName;
+    public string playerDeathSoundName = "Death";
+    public string playerSpawnSoundName = "Spawn";
+    public string gameOverSoundName = "GameOver";
 
     [SerializeField]
     private GameObject gameOverUI;
@@ -56,6 +58,8 @@ public class GameMaster : MonoBehaviour
 
     public void EndGame()
     {
+        audioManager.PlaySound(gameOverSoundName);
+        audioManager.StopSound("Music");
 
         Debug.Log("Game Over");
         gameOverUI.SetActive(true);
@@ -63,8 +67,10 @@ public class GameMaster : MonoBehaviour
 
     public IEnumerator RespawnPlayer()
     {
-        audioManager.PlaySound(spawnSoundName);
+        audioManager.PlaySound(playerDeathSoundName);
         yield return new WaitForSeconds(spawnDelay);
+        audioManager.PlaySound(playerSpawnSoundName);
+
         Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         Transform spawnParticleClone = Instantiate(spawnPrefab, spawnPoint.position, spawnPoint.rotation);
         Destroy(spawnParticleClone.gameObject, 3f);
@@ -92,8 +98,13 @@ public class GameMaster : MonoBehaviour
 
     public void _KillEnemy(Enemy _enemy)
     {
+        audioManager.PlaySound(_enemy.deathSoundName);
+
+        //Add Particles
         GameObject _clone = (GameObject)Instantiate(_enemy.deathParticles.gameObject, _enemy.transform.position, Quaternion.identity);
         Destroy(_clone, 5f);
+
+        //Camera Shake
         cameraShake.Shake(_enemy.shakeAmount,_enemy.shakeLength);
         Destroy(_enemy.gameObject);
     }

@@ -16,6 +16,12 @@ public class Weapon : MonoBehaviour
     public float camShakeAmount = 0.05f;
     public float camShakeLength = 0.1f;
 
+    public string weaponShootSound = "DefaultShot";
+
+
+    //Caching
+    private AudioManager audioManager;
+
     private CameraShake camShake;
     private float timeToFire = 0;
     private float timeToSpawnEffect=0;
@@ -36,6 +42,11 @@ public class Weapon : MonoBehaviour
         if(camShake==null)
         {
             Debug.LogError("No Camera Shake Script Found on GM objects");
+        }
+        audioManager = AudioManager.instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("No AudioManager Found in scene");
         }
     }
 
@@ -122,6 +133,7 @@ public class Weapon : MonoBehaviour
         muzzleFlashPrefab.localScale = new Vector3(size, size, 0);
         Destroy(muzzleFlashClone.gameObject,0.02f);
 
-        //Shake the camera
+        //Play shoot sound
+        audioManager.PlaySound(weaponShootSound);
     }
 }

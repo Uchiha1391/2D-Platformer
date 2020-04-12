@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
 
     public int fallBoundary = -20;
 
+    public string damageSoundName = "Grunt";
+
+    private AudioManager audioManager;
+
     [SerializeField]
     private StatusIndicator statusIndicator;
 
@@ -39,6 +43,11 @@ public class Player : MonoBehaviour
         else
         {
             statusIndicator.SetHealth(playerStats.curHealth, playerStats.maxHealth);
+        }
+        audioManager = AudioManager.instance;
+        if(audioManager==null)
+        {
+            Debug.LogError("No AudioManager found in the scene");
         }
     }
 
@@ -56,6 +65,10 @@ public class Player : MonoBehaviour
         if (playerStats.curHealth <= 0)
         {
             GameMaster.KillPlayer(this);
+        }
+        else
+        {
+            audioManager.PlaySound(damageSoundName);
         }
         statusIndicator.SetHealth(playerStats.curHealth, playerStats.maxHealth);
     }

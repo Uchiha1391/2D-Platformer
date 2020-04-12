@@ -18,12 +18,15 @@ public class Sound
     [Range(0f,0.5f)]
     public float randmPitch = 0.1f;
 
+    public bool loop = false;
+
     private AudioSource soundSource;
 
     public void SetSource(AudioSource _source)
     {
         soundSource = _source;
         soundSource.clip = soundClip;
+        soundSource.loop = loop;
     }
 
     public void Play()
@@ -31,6 +34,11 @@ public class Sound
         soundSource.volume = volume * (1+Random.Range(-randomVolume/2f, +randomVolume/2f));
         soundSource.pitch = pitch;
         soundSource.Play();
+    }
+
+    public void Stop()
+    {
+        soundSource.Stop();
     }
 }
 
@@ -45,7 +53,15 @@ public class AudioManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("More than one Audio Manager in the scene. ");
+            if(instance!=this)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                instance = this;
+                DontDestroyOnLoad(this);
+            }
         }
         else
         {
@@ -61,6 +77,8 @@ public class AudioManager : MonoBehaviour
             _go.transform.SetParent(this.transform);
             sounds[i].SetSource(_go.AddComponent<AudioSource>());
         }
+
+        PlaySound("Music");
     }
 
     public void PlaySound(string _name)
@@ -70,6 +88,21 @@ public class AudioManager : MonoBehaviour
             if(sounds[i].soundName==_name)
             {
                 sounds[i].Play();
+                return;
+            }
+        }
+
+        //no sound with _name found
+        Debug.LogWarning("AudioManager: Sound not found in sounds list. " + _name);
+    }
+
+    public void StopSound(string _name)
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].soundName == _name)
+            {
+                sounds[i].Stop();
                 return;
             }
         }
