@@ -74,6 +74,7 @@ public class GameMaster : MonoBehaviour
     {
         upgradeMenu.SetActive(!upgradeMenu.activeSelf);
         onToggleUpgradeMenu.Invoke(upgradeMenu.activeSelf);
+        GetComponent<WaveSpawner>().enabled = !upgradeMenu.activeSelf;
     }
 
     public void EndGame()

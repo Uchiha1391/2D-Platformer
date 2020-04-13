@@ -51,6 +51,8 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
+        if (!Enabled())
+            return;
         if(spawnState == SpawnState.WAITING)
         {
             if(!isEnemyAlive())
@@ -67,7 +69,8 @@ public class WaveSpawner : MonoBehaviour
         {
             if (spawnState != SpawnState.SPAWNING)
             {
-                StartCoroutine(SpawnWave(waves[nextWave]));
+                if(Enabled())
+                    StartCoroutine(SpawnWave(waves[nextWave]));
             }
 
         }
@@ -75,6 +78,11 @@ public class WaveSpawner : MonoBehaviour
         {
             waveCountdown -= Time.deltaTime;
         }
+    }
+
+    bool Enabled()
+    {
+        return this.enabled;
     }
 
     void WaveCompleted()
@@ -98,6 +106,8 @@ public class WaveSpawner : MonoBehaviour
 
     bool isEnemyAlive()
     {
+        if (!Enabled())
+            return true;
         searchCountdown -= Time.deltaTime;
         if (searchCountdown <= 0f)
         {
@@ -116,20 +126,25 @@ public class WaveSpawner : MonoBehaviour
 
         for(int i = 0; i < _wave.count;i++)
         {
-            SpawnEnemy(_wave.enemy);
+            if (SpawnEnemy(_wave.enemy) == false)
+                i--;
             yield return new WaitForSeconds(1f / _wave.spawnRate);
         }
 
         spawnState = SpawnState.WAITING;
 
+        yield return new WaitUntil(Enabled);
         yield break;
     }
 
-    void SpawnEnemy(Transform _enemy)
+    bool SpawnEnemy(Transform _enemy)
     {
+        if (!Enabled())
+            return false;
         Debug.Log("Spawning Enemy: " + _enemy.name);
 
         Transform _spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(_enemy, _spawnPoint.transform.position, _spawnPoint.transform.rotation);
+        return true;
     }
 }

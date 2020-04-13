@@ -56,21 +56,30 @@ public class EnemyAI : MonoBehaviour
         }
 
         //Start a new path to the target position and return the result to the OnPathComplete function
+
         seeker.StartPath(transform.position, target.position, OnPathComplete);
 
         StartCoroutine(UpdatePath());
     }
 
+    bool Enabled()
+    {
+        return this.enabled;
+    }
+
     IEnumerator SearchForPlayer()
     {
+        yield return new WaitUntil(Enabled);
         GameObject searchResult = GameObject.FindGameObjectWithTag("Player");
         if(searchResult==null)
         {
+            yield return new WaitUntil(Enabled);
             yield return new WaitForSeconds(0.5f);
             StartCoroutine(SearchForPlayer());
         }
         else
         {
+            yield return new WaitUntil(Enabled);
             searchingForPlayer = false;
             target = searchResult.transform;
             StartCoroutine(UpdatePath());
@@ -84,13 +93,16 @@ public class EnemyAI : MonoBehaviour
     {
         if (target == null)
         {
+            yield return new WaitUntil(Enabled);
             if (!searchingForPlayer)
             {
+                yield return new WaitUntil(Enabled);
                 searchingForPlayer = true;
                 StartCoroutine(SearchForPlayer());
             }
             yield return false;
         }
+        yield return new WaitUntil(Enabled);
         seeker.StartPath(transform.position, target.position, OnPathComplete);
 
         yield return new WaitForSeconds(1f / updateRate);
@@ -109,6 +121,8 @@ public class EnemyAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!Enabled())
+            return;
         if (target == null)
         {
             if (!searchingForPlayer)

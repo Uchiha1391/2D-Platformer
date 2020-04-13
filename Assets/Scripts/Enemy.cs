@@ -64,8 +64,6 @@ public class Enemy : MonoBehaviour
     void OnUpgradeMenuToggle(bool activeState)
     {
         GetComponent<EnemyAI>().enabled = !activeState;
-        GetComponent<WaveUI>().enabled = !activeState;
-        GetComponent<WaveSpawner>().enabled = !activeState;
     }
 
     public void DamageEnemy(int damage)
@@ -100,5 +98,10 @@ public class Enemy : MonoBehaviour
             _player.DamagePlayer(enemyStats.damage);
             DamageEnemy(99999);
         }
+    }
+
+    void OnDestroy()
+    {
+        GameMaster.gM.onToggleUpgradeMenu -= OnUpgradeMenuToggle;
     }
 }

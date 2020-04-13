@@ -94,4 +94,9 @@ public class Player : MonoBehaviour
         statusIndicator.SetHealth(playerStats.curHealth, playerStats.maxHealth);
     }
 
+    void OnDestroy()
+    {
+        GameMaster.gM.onToggleUpgradeMenu -= OnUpgradeMenuToggle;
+    }
+
 }
