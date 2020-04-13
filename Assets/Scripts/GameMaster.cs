@@ -17,6 +17,11 @@ public class GameMaster : MonoBehaviour
         
     }
 
+    [SerializeField]
+    private int startingMoney;
+    public static int Money;
+
+
     void Awake()
     {
         remainingPlayerLives = maxLives;
@@ -53,6 +58,7 @@ public class GameMaster : MonoBehaviour
             Debug.LogError("No camera shake referenced in Game Master");
         }
         remainingPlayerLives = maxLives;
+        Money = startingMoney;
 
         //caching
         audioManager = AudioManager.instance;
